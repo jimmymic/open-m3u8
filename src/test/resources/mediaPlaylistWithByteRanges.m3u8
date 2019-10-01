@@ -5,7 +5,7 @@
 #EXTINF:9.009,
 http://media.example.com/first.ts
 #EXT-X-BYTERANGE:20
-#EXTINF:9.009,
+#EXTINF:9,
 http://media.example.com/first.ts
 #EXT-X-BYTERANGE:30
 #EXTINF:3.003,

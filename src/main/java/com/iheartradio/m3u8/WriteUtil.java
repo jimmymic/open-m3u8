@@ -91,7 +91,7 @@ public class WriteUtil {
         return sb.toString();
     }
 
-    private static final DecimalFormat df = new DecimalFormat("#.####");
+    private static final DecimalFormat df = new DecimalFormat("0.0###");
     public static String writeFloat(float f) {
         return df.format(f);
     }

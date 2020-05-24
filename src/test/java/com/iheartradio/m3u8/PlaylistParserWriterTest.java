@@ -176,6 +176,26 @@ public class PlaylistParserWriterTest {
 
 
     @Test
+    public void masterPlaylistSetFrameRate() throws  IOException, ParseException, PlaylistException {
+        Playlist playlist = readPlaylist("masterPlaylistWithVideoRange.m3u8");
+
+        List<PlaylistData> playlistDataList = playlist.getMasterPlaylist().getPlaylists();
+        List<PlaylistData> newPlaylistDataList = new ArrayList();
+        for (PlaylistData playlistData: playlistDataList) {
+            if (playlistData.hasStreamInfo()) {
+                StreamInfo streamInfo = playlistData.getStreamInfo();
+                newPlaylistDataList.add(playlistData.buildUpon().withStreamInfo(streamInfo.buildUpon().withFrameRate(59.94f).build()).build());
+            } else
+                newPlaylistDataList.add(playlistData);
+        }
+        playlist = playlist.buildUpon().withMasterPlaylist(playlist.getMasterPlaylist().buildUpon().withPlaylists(newPlaylistDataList).build()).build();
+        String sPlaylist = writePlaylist(playlist);
+
+        System.out.println(sPlaylist);
+    }
+
+
+    @Test
     public void discontinutyPlaylist() throws IOException, ParseException, PlaylistException {
         Playlist playlist = readPlaylist("withDiscontinuity.m3u8");
         String sPlaylist = writePlaylist(playlist);

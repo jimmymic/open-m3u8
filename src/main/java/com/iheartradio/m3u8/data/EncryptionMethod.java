@@ -7,7 +7,8 @@ public enum EncryptionMethod {
     NONE("NONE"),
     AES("AES-128"),
     SAMPLE_AES("SAMPLE-AES"),
-    SAMPLE_AES_CENC("SAMPLE-AES-CENC");
+    SAMPLE_AES_CENC("SAMPLE-AES-CENC"),
+    SAMPLE_AES_CTR("SAMPLE-AES-CTR");
 
     private static final Map<String, EncryptionMethod> sMap = new HashMap<String, EncryptionMethod>();
 
